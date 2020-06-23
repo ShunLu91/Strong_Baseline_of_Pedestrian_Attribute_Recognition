@@ -12,7 +12,7 @@ from config import argument_parser
 from dataset.AttrDataset import AttrDataset, get_transform
 from loss.CE_loss import CEL_Sigmoid
 from models.base_block import FeatClassifier, BaseClassifier
-from models.resnet import resnet50
+from models.resnet import *
 from tools.function import get_model_log_path, get_pedestrian_metrics
 from tools.utils import time_str, save_ckpt, ReDirectSTD, set_seed
 
@@ -65,7 +65,15 @@ def main(args):
     labels = train_set.label
     sample_weight = labels.mean(0)
 
-    backbone = resnet50()
+    if args.model == 'resnet18':
+        backbone = resnet18()
+    elif args.model == 'resnet34':
+        backbone = resnet34()
+    elif args.model == 'resnet50':
+        backbone = resnet50()
+    else:
+        raise ValueError('No Defined Model!')
+
     classifier = BaseClassifier(nattr=train_set.attr_num)
     model = FeatClassifier(backbone, classifier)
 

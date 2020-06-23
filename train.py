@@ -71,6 +71,10 @@ def main(args):
         backbone = resnet34()
     elif args.model == 'resnet50':
         backbone = resnet50()
+    elif args.model == 'resnet101':
+        backbone = resnet101()
+    elif args.model == 'resnet152':
+        backbone = resnet50()
     else:
         raise ValueError('No Defined Model!')
 

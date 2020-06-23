@@ -8,8 +8,8 @@ class BaseClassifier(nn.Module):
     def __init__(self, nattr):
         super().__init__()
         self.logits = nn.Sequential(
-            nn.Linear(512, nattr),
-            # nn.Linear(2048, nattr),
+            # nn.Linear(512, nattr),
+            nn.Linear(2048, nattr),
             nn.BatchNorm1d(nattr)
         )
         self.avg_pool = nn.AdaptiveAvgPool2d(1)

@@ -5,7 +5,7 @@ def argument_parser():
     parser = argparse.ArgumentParser(description="attribute recognition",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument("dataset", type=str, default="RAP")
+    parser.add_argument("--dataset", type=str, default="RAP")
     parser.add_argument("--debug", action='store_false')
 
     parser.add_argument("--batchsize", type=int, default=64)

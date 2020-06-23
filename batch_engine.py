@@ -36,7 +36,7 @@ def batch_trainer(epoch, model, train_loader, criterion, optimizer):
         train_probs = torch.sigmoid(train_logits)
         preds_probs.append(train_probs.detach().cpu().numpy())
 
-        log_interval = 20
+        log_interval = 100
         if (step + 1) % log_interval == 0 or (step + 1) % len(train_loader) == 0:
             print(f'{time_str()}, Step {step}/{batch_num} in Ep {epoch}, {time.time() - batch_time:.2f}s ',
                   f'train_loss:{loss_meter.val:.4f}')
